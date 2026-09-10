@@ -1,0 +1,18 @@
+terminal 1:
+cd C:\Users\New\OneDrive\Desktop\pravaah-main\backend
+venv\Scripts\activate
+uvicorn app.main:app --reload --port 8000
+
+terminal 2:
+cd C:\Users\New\OneDrive\Desktop\pravaah-main\ai
+venv\Scripts\activate
+python worker.py
+
+terminal 3:
+cd C:\Users\New\OneDrive\Desktop\pravaah-main\frontend\web_app
+npm run dev
+
+terminal 4:
+cd C:\Users\New\OneDrive\Desktop\pravaah-main\backend
+venv\Scripts\activate
+python -m app.workers.manage weather
