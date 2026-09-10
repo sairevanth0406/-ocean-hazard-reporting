@@ -356,11 +356,6 @@ Hyderabad, Telangana, India
 
 ---
 
-# 📜 License
-
-This project is developed for academic and research purposes under Theme Based Project (TBP).
-
----
 
 # ⭐ PRAVAAH
 
