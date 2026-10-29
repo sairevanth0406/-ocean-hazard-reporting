@@ -2,7 +2,7 @@ import math
 import os
 import asyncio
 from datetime import datetime, timezone
-from typing import Dict, Any, List, Optional
+from typing import Dict, Any
 from fastapi import APIRouter, Query, Depends
 import httpx
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -53,7 +53,7 @@ async def fetch_weather_for_coords(lat: float, lng: float) -> Dict[str, Any]:
     try:
         async with httpx.AsyncClient(timeout=5.0) as client:
             resp = await client.get(
-                f"http://api.weatherapi.com/v1/current.json",
+                "http://api.weatherapi.com/v1/current.json",
                 params={"key": key, "q": f"{lat},{lng}"}
             )
             if resp.status_code == 200:
