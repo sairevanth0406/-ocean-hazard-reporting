@@ -1,0 +1,17 @@
+# Core async and messaging libraries
+aio-pika
+httpx
+pika
+
+# Database & validation
+pydantic
+pydantic-settings
+python-dotenv
+
+# Google Gemini API
+google-generativeai
+google-auth
+
+# External API client & utilities
+huggingface_hub
+requests
