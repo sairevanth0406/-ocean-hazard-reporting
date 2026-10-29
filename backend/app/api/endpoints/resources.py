@@ -2,7 +2,7 @@ import math
 import os
 import asyncio
 from datetime import datetime, timezone
-from typing import Dict, Any
+from typing import Dict, Any, List
 from fastapi import APIRouter, Query, Depends
 import httpx
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -94,7 +94,7 @@ async def get_nearby_resources(
     s_lat, s_lng = offset_coords(lat, lng, 3.1, -1.2)
     c_lat, c_lng = offset_coords(lat, lng, -2.4, -2.1)
 
-    places = [
+    places: List[Dict[str, Any]] = [
         {
             "name": f"{city} Central Police Station & Control Room",
             "type": "Police Station",
@@ -141,7 +141,11 @@ async def get_nearby_resources(
         }
     ]
 
-    places.sort(key=lambda x: float(x.get("distanceKm", 0.0)))
+    def _get_distance(item: Dict[str, Any]) -> float:
+        val = item.get("distanceKm", 0.0)
+        return float(val) if isinstance(val, (int, float)) else 0.0
+
+    places.sort(key=_get_distance)
     return {
         "location": geo,
         "places": places
