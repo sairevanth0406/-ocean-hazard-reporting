@@ -141,7 +141,7 @@ async def get_nearby_resources(
         }
     ]
 
-    places.sort(key=lambda x: x["distanceKm"])
+    places.sort(key=lambda x: float(x.get("distanceKm", 0.0)))
     return {
         "location": geo,
         "places": places
